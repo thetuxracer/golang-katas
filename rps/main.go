@@ -5,24 +5,17 @@ import (
 	"strings"
 )
 
-
-// P R 
-
-// R S
-
-// S P
-
-// P,R,S
 var scores = map[string]string{
 	"paper" 	: "rock",
 	"rock" 		: "scissors",
 	"scissor" 	: "paper",
 }
 
-func rps(p1 string) string {
+func rps(round string) string {
 	
-	fmt.Println("--")
-	parts := strings.Split(p1, ", ")
+	fmt.Println("New round begins.")
+
+	parts := strings.Split(round, ", ")
 	player_1 := strings.ToLower(parts[0])
 	player_2 := strings.ToLower(parts[1])
 
@@ -30,8 +23,10 @@ func rps(p1 string) string {
 
 	if player_1 == player_2 {
 		return "It's a Tie"
-		
 	}
+	
+	// Opportunity to make more readable: Move this into an object and replace
+	// comparision with a .beats() function call that returns boolean or string.
 	
 	if scores[player_1] == player_2 {
 		return "Player 1 wins."
@@ -45,11 +40,7 @@ func rps(p1 string) string {
 }
 
 func main()  {
-	round_1 := "Rock, Paper"
-	round_2 := "Scissor, Paper"
-	round_3 := "Paper, Paper"
-
-	fmt.Println(rps(round_1))
-	fmt.Println(rps(round_2))
-	fmt.Println(rps(round_3))
+	fmt.Println(rps("Rock, Paper"))
+	fmt.Println(rps("Scissor, Paper"))
+	fmt.Println(rps("Paper, Paper"))
 }
